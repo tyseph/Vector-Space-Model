@@ -3,6 +3,7 @@ import nltk
 import re
 import math
 import numpy as np
+import streamlit as st
 import collections
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
@@ -63,7 +64,7 @@ word_index = collections.OrderedDict(sorted(word_index.items()))
 pw(word_index)
 
 #-----ENTER THE QUERY-----#
-query = input("Enter a query here: ")
+query = st.text_input("Enter a query here: ")
 #query = "gold silver truck"
 
 qry_index = {}
@@ -125,4 +126,5 @@ rank = np.flip(np.argsort(cos))
 
 print("\nDoc no. Ranked to relevance: ")
 for i in range(10):
-    print(i+1,".) doc ", rank[i] + 1)
+    st.write("Doc ", rank[i] + 1)
+    
